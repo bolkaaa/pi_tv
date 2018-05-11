@@ -1,0 +1,79 @@
+{% extends 'admin/custom_base.html' %}
+
+{% block head %}
+<link href="{{ url_for('static', filename='js/upload/css/jquery.fileupload.css') }}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+  <span class="btn btn-success fileinput-button">
+      <i class="glyphicon glyphicon-plus"></i>
+      <span>{{ _('Upload files...') }}</span>
+      <input id="fileupload" type="file" name="files[]" data-url="/admin/uploads/put" multiple>
+  </span>
+  <!--<button type="button" class="btn btn-success" data-toggle="modal" data-target="#mediaModal"><i class="glyphicon glyphicon-plus"></i>&nbsp;<span>{{ _('Add URL..') }}</span></button>-->
+  <br>
+  <br>
+  <div id="my-media">
+    {% include 'admin/media.html' with context %}
+  </div>
+  <!--<div class="modal fade" id="mediaModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">{{ _('URL') }}</h4>
+        </div>
+        <div class="modal-body">
+          <input id="url-picker" type="url" class="input" style="width:100%;">
+        </div>
+        <div class="modal-footer">
+          <div class="col-sm-6 text-left">
+            <button type="button" class="btn btn-success" onclick="submit_url();">{{ _('Submit') }}</button>
+         </div>
+         <div class="col-sm-6 text-right">
+            <button type="button" class="btn btn-default" data-dismiss="modal">{{ _('Close') }}</button>
+         </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
+{% endblock %}
+
+{% block tail_js %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='js/upload/js/vendor/jquery.ui.widget.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/upload/js/jquery.iframe-transport.js') }}"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/upload/js/jquery.fileupload.js') }}"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+  $(function () {
+      'use strict';
+      $('#fileupload').fileupload({
+          url: "/upload",
+          done: function (e, data) {
+              $('#row').prepend(
+                data.result
+              );
+          },
+      }).prop('disabled', !$.support.fileInput)
+          .parent().addClass($.support.fileInput ? undefined : 'disabled');    
+  });
+  /* 
+  function submit_url() {
+    var url = $("#url-picker").val();
+    $.post("{{ url_for('uploads.put_url') }}", 
+            {'url': url},
+            function(data) {
+                $('#mediaModal').modal('hide');
+                $('#row').prepend(
+                  data
+                );
+            }
+    );
+  };
+  */
+  function delete_file(e) {
+     $.post(e.href, function (data){ $('#my-media').html(data); });
+  }
+  </script>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% from "security/_macros.html" import render_field_with_errors, render_field %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>pi_tv</title>
+    
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+    
+        <link href="/admin/static/bootstrap/bootstrap3/swatch/default/bootstrap.min.css?v=3.3.5" rel="stylesheet">
+        <link href="/admin/static/bootstrap/bootstrap3/css/bootstrap-theme.min.css?v=3.3.5" rel="stylesheet">
+        <link href="/admin/static/admin/css/bootstrap3/admin.css?v=1.1.1" rel="stylesheet">
+        
+        <style>
+        body {
+            padding-top: 4px;
+        }
+        .container {
+            width: 25%;
+        }
+        </style>
+        
+  </head>  
+  
+{% block content %}
+<div class="container">
+<h1>{{ _('pi_tv') }}</h1>
+<br>
+{% include "security/_messages.html" %}
+<form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+  {{ login_user_form.hidden_tag() }}
+  <div class="form-group">
+  {{ render_field_with_errors(login_user_form.email, class_="form-control") }}
+  </div>
+  <div class="form-group">
+  {{ render_field_with_errors(login_user_form.password, class_="form-control") }}
+  </div>
+  {{ render_field(login_user_form.submit, class_="btn btn-default") }}
+</form>
+{% include "security/_menu.html" %}
+</div>
+{% endblock %}
+
+</html>

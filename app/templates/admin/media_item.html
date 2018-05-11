@@ -1,0 +1,13 @@
+{% if media %}
+<div class="col-lg-2 col-md-4 col-xs-6">
+  <div class="thumbnail">
+      <a target="_blank" href="{{ url_for('uploads.get_file', filename=media.filename) }}" class="d-block mb-4 h-100" style="margin:5px;">
+        <img class="img-fluid" src="{{ url_for('uploads.thumbnail', filename=media.filename) }}" alt="">
+      </a>
+    <div class="caption" style="font-size: 10px; word-wrap: break-word;">
+          <p><strong>{{media.title}}</strong><br>{{media.type}}</p>
+          <p><a href="{{ url_for('uploads.delete_file', filename=media.filename) }}" onclick="delete_file(this); return false;" class="btn btn-danger btn-xs" role="button"><span class="fa fa-trash glyphicon glyphicon-trash"></span></a></p>
+    </div>
+  </div>
+</div>
+{% endif %}

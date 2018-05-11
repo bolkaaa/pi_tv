@@ -1,0 +1,15 @@
+<div id="row">
+  {% for item in media %}  
+  <div class="col-lg-2 col-md-4 col-xs-6">
+    <div class="thumbnail">
+      <a target="_blank" href="{{ url_for('uploads.get_file', filename=item.filename) }}" class="d-block mb-4 h-100" style="margin:5px;">
+        <img class="img-fluid" src="{{ url_for('uploads.thumbnail', filename=item.filename) }}" alt="">
+      </a>
+      <div class="caption" style="font-size: 10px; word-wrap: break-word;">
+            <p><strong>{{item.title}}</strong><br>{{item.type}}</p>
+            <p><a href="{{ url_for('uploads.delete_file', filename=item.filename) }}" onclick="delete_file(this); return false;" class="btn btn-danger btn-xs" role="button"><span class="fa fa-trash glyphicon glyphicon-trash"></span></a></p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,8 @@
+Flask
+Flask-Admin
+Flask-Migrate
+Flask-Security
+Flask-Sqlalchemy
+Flask-SSLify
+Pillow
+pwgen

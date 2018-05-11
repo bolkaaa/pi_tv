@@ -1,0 +1,23 @@
+<div id="row">
+  {% for item in loop_media %}  
+  <div id="item-{{item.id}}" class="col-lg-2 col-md-4 col-xs-6">
+    <div class="thumbnail">
+
+      <a target="_blank" href="{{ url_for('uploads.get_file', filename=item.media.filename) }}" class="d-block mb-4 h-100" style="margin:5px;">
+        <img class="img-fluid" src="{{ url_for('uploads.thumbnail', filename=item.media.filename) }}" alt="">
+      </a>
+      
+      <div class="caption" style="font-size: 10px; word-wrap: break-word;">
+            <p>#<strong>{{item.position}}</strong></p>
+            {% if item.media.type == "image" %}
+            <p><input type="range" min="1" max="60" value="{{item.interval}}" 
+                onchange="update_relation_interval(this, '{{ url_for('loops.update_relation_interval', loop_id=item.loop_id, relation_id=item.id) }}');" 
+                oninput="$('#interval-{{item.id}}').html(this.value + ' sec');"><output id="interval-{{item.id}}">{{item.interval}} sec</output></p>
+            {% endif %}
+            <p><strong>{{item.media.title}}</strong></p>
+            <p><a href="{{ url_for('loops.delete_media', loop_id=item.loop_id, relation_id=item.id) }}" onclick="delete_relation(this); return false;" class="btn btn-danger btn-xs" role="button"><span class="fa fa-trash glyphicon glyphicon-trash"></span></a></p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

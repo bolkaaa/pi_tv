@@ -1,0 +1,101 @@
+{% extends '/admin/model/edit.html' %}
+
+{% block head %}
+  {{ super() }}
+  <link href="{{ url_for('static', filename='css/image-picker.css') }}" rel="stylesheet">
+  <style>
+  .modal-lg {
+    width: 90%;
+   }
+  </style>
+{% endblock %}  
+
+{% block edit_form %}
+<div id="row" style="margin: 10px"> 
+
+{% if media %}   
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#mediaModal">{{ _('Select media...') }}</button>
+{% else %}
+  <p>{{ _('No media files.') }}</p> 
+{% endif %}
+ 
+ <div class="modal fade" id="mediaModal" role="dialog">
+   <div class="modal-dialog modal-lg">
+     <div class="modal-content">
+       <div class="modal-header">
+         <button type="button" class="close" data-dismiss="modal">&times;</button>
+         <h4 class="modal-title">{{ _('Media') }}</h4>
+       </div>
+       <div class="modal-body">
+         <select id="media-picker" multiple>
+             {% for item in media %}
+                <option data-img-src="{{ url_for('uploads.thumbnail', filename=item.filename) }}" value="{{item.id}}">{{item.title}}</option>
+             {% endfor %}
+         </select>
+       </div>
+       <div class="modal-footer">
+         <div class="col-sm-6 text-left">
+           <button type="button" class="btn btn-success" onclick="submit_selection();">{{ _('Submit') }}</button>
+        </div>
+        <div class="col-sm-6 text-right">
+           <button type="button" class="btn btn-default" data-dismiss="modal">{{ _('Close') }}</button>
+        </div>
+       </div>
+     </div>
+   </div>
+ </div>
+ </div>
+ <div id="my-loop">
+   {% include 'admin/loop_media.html' with context %}
+ </div>
+ <p style="clear:left">&nbsp;</p>
+{{ super() }}
+{% endblock %}
+
+{% block tail %}
+  {{ super() }}
+  <script type="text/javascript" src="{{ url_for('static', filename='js/image-picker.min.js') }}"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+    $('#my-loop #row').sortable({
+          update: function(event, ui) {
+              var postData = $(this).sortable('serialize');
+              $.post('{{ url_for("loops.update_order", loop_id=request.args.get("id")) }}', {
+                  data: $(this).sortable('serialize')
+              }, function (data) { $('#my-loop #row').html(data) });
+          }
+    });
+    $(document).ajaxSuccess(function() {
+          $('#my-loop #row').sortable({
+                update: function(event, ui) {
+                    var postData = $(this).sortable('serialize');
+                    $.post('{{ url_for("loops.update_order", loop_id=request.args.get("id")) }}', {
+                        data: $(this).sortable('serialize')
+                    }, function (data) { $('#my-loop #row').html(data) });
+                }
+          });
+    });
+    $('#media-picker').imagepicker({show_label: true});
+    function submit_selection() {
+      var values = $('#media-picker option:selected').map(function () {
+        return this.value;
+      }).get(); 
+      $.post("{{ url_for('loops.put_media', loop_id=request.args.get('id')) }}", 
+              {'media_ids[]': values},
+              function(data) {
+                  $('#media-picker option').each(function () { $(this).prop('selected', false); });
+                  $('#media-picker').data('picker').sync_picker_with_select();
+                  $('#mediaModal').modal('hide');
+                  $('#my-loop').html(data);
+              }
+      );
+    };
+    function delete_relation(e) {
+       $.post(e.href, function (data){ $('#my-loop').html(data); });
+    }
+    function update_relation_interval(e, url) {
+       // console.log(e.value);
+       $.post(url, {'interval': e.value}, function (data){ $('#my-loop').html(data); });
+    }
+  </script>
+{% endblock %}

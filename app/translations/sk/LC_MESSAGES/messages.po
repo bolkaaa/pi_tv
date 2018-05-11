@@ -1,0 +1,68 @@
+# Slovak translations for PROJECT.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-05-10 11:19+0000\n"
+"PO-Revision-Date: 2018-05-10 10:58+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: sk\n"
+"Language-Team: sk <LL@li.org>\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.4.0\n"
+
+#: main.py:77
+msgid "Users"
+msgstr "Užívatelia"
+
+#: main.py:78
+msgid "Uploads"
+msgstr "Galéria"
+
+#: main.py:79
+msgid "Loops"
+msgstr "Sekvencie"
+
+#: templates/admin/custom_base.html:17
+msgid "Log Out"
+msgstr "Odhlásiť"
+
+#: templates/admin/custom_edit_loop.html:17
+msgid "Select media..."
+msgstr "Vybrať z galérie..."
+
+#: templates/admin/custom_edit_loop.html:19
+msgid "No media files."
+msgstr "Prázdna galéria."
+
+#: templates/admin/custom_edit_loop.html:27
+msgid "Media"
+msgstr "Galéria"
+
+#: templates/admin/custom_edit_loop.html:38
+msgid "Submit"
+msgstr "Potvrdiť"
+
+#: templates/admin/custom_edit_loop.html:41
+msgid "Close"
+msgstr "Zavrieť"
+
+#: templates/admin/custom_list_loops.html:7
+msgid "SYNC"
+msgstr "Použiť túto sekvenciu"
+
+#: templates/admin/uploads.html:10
+msgid "Upload files..."
+msgstr "Nahrať do galérie..."
+
+#: templates/security/login_user.html:31
+msgid "pi_tv"
+msgstr ""
+
