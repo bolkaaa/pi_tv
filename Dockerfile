@@ -9,7 +9,7 @@ RUN apt-get install -y \
     python3-pip \
     python3-virtualenv \
     python3-setuptools \
-    python3-imaging \
+    python3-pil \
     libpq-dev \
     libjpeg-dev \
     nginx \
