@@ -1,5 +1,5 @@
-# FROM resin/raspberry-pi-python:3.6
-FROM python:3.6
+FROM resin/raspberry-pi-python:3.6
+# FROM python:3.6
 
 COPY ./app /app
 
