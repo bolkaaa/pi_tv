@@ -10,7 +10,7 @@ RUN apt-get install -y \
     python3-virtualenv \
     python3-setuptools \
     python3-imaging \
-    libpq-dev 
+    libpq-dev \
     libjpeg-dev \
     nginx \
     build-essential \
