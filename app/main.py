@@ -68,5 +68,5 @@ admin.add_view(UserAdmin(User, db.session, name='Užívatelia', endpoint='users'
 admin.add_view(UploadsView(name='Galéria', endpoint='uploads'))
 admin.add_view(LoopModelView(Loop, db.session, name='Sekvencie', endpoint='loops'))
 
-if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80, debug=True)
+# if __name__ == "__main__":
+#    app.run(host='0.0.0.0', port=80, debug=True)

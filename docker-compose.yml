@@ -8,4 +8,4 @@ services:
     ports:
       - "80:80"
     env_file: .env
-    command: python3 app/main.py
+    command: flask run --host=web --port=80
