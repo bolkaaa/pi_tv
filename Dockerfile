@@ -42,9 +42,8 @@ RUN apt-get update && apt-get install -y supervisor && rm -rf /var/lib/apt/lists
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 COPY ./app /app
-WORKDIR /app
 
-COPY requirements.txt /app/requirements.txt
-RUN pip3 install -U -r requirements.txt
+COPY requirements.txt /app
+RUN pip3 install -r requirements.txt
 
 CMD ["/usr/bin/supervisord"]
