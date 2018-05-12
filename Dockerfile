@@ -44,6 +44,6 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY ./app /app
 
 COPY requirements.txt /app
-RUN pip3 install -r requirements.txt
+RUN pip3 install -r /app/requirements.txt
 
 CMD ["/usr/bin/supervisord"]
