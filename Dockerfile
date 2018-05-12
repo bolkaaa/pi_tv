@@ -34,4 +34,6 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY ./app /app
 WORKDIR /app
 
+RUN pip install -U -r /app/requirements.txt
+
 CMD ["/usr/bin/supervisord"]
