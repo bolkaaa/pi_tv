@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from flask import Flask, redirect
 from flask_security import current_user, login_required, \
      Security, SQLAlchemyUserDatastore, utils
