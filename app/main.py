@@ -69,5 +69,5 @@ admin.add_view(UploadsView(name='Galéria', endpoint='uploads'))
 admin.add_view(LoopModelView(Loop, db.session, name='Sekvencie', endpoint='loops'))
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#    app.run(debug=True)
