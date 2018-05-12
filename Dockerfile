@@ -9,8 +9,7 @@ RUN apt-get install -y \
     python3-pip \
     python3-virtualenv \
     python3-setuptools \
-    jpeg-dev \
-    zlib-dev \
+    nginx \
     build-essential \
     --no-install-recommends
 RUN pip3 install --upgrade pip
