@@ -2,11 +2,10 @@ FROM resin/raspberry-pi-python:latest
 
 RUN \
   apt-get update && \
-  apt-get install -y -q --no-install-recommends ca-certificates git nginx gettext-base python-setuptools python-dev build-essential && \
+  apt-get install -y -q --no-install-recommends ca-certificates git nginx && \
   apt-get clean && \
 rm -rf /var/lib/apt/lists/*
 
-RUN easy_install pip
 RUN pip install uwsgi
 
 # forward request and error logs to docker log collector
