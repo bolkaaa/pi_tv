@@ -9,12 +9,13 @@ RUN apt-get install -y \
     python3-pip \
     python3-virtualenv \
     python3-setuptools \
+    python3-imaging \
+    libpq-dev 
+    libjpeg-dev \
     nginx \
     build-essential \
     --no-install-recommends
 
-RUN apt-get build-dep python-imaging    
-    
 RUN pip3 install --upgrade pip
 
 RUN pip3 install uwsgi
