@@ -32,7 +32,10 @@ RUN apt-get update && apt-get install -y supervisor && rm -rf /var/lib/apt/lists
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 COPY ./app /app
+COPY requirements.txt /app/requirements.txt
+
 WORKDIR /app
+
 
 RUN pip install -U -r requirements.txt
 
