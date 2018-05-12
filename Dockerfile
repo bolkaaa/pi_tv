@@ -8,6 +8,9 @@ RUN apt-get install -y \
     python3-dev \
     python3-pip \
     python3-virtualenv \
+    jpeg-dev \
+    zlib-dev \
+    build-essential \
     --no-install-recommends
 RUN pip3 install --upgrade pip
 
@@ -38,6 +41,6 @@ COPY ./app /app
 WORKDIR /app
 
 COPY requirements.txt /app/requirements.txt
-RUN pip install -U -r requirements.txt
+RUN pip3 install -U -r requirements.txt
 
 CMD ["/usr/bin/supervisord"]
