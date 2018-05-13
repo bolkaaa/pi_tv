@@ -3,6 +3,7 @@ version: '2'
 services:
   web:
     build: .
+    image: pi_tv
     volumes:
       - ./app:/app
     ports:
