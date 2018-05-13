@@ -20,9 +20,9 @@ while true; do
 			if [ -e ${DEST} ]; then
 				# lets run fbi if it is an image file...
 				if [ "$TYPE" = "image" ]; then	
-					fbi -a -t ${DURATION} -1 ${DEST} # >/dev/null 2>>/dev/null
-					# else
-					# vlc --play-and-exit -q $f	
+					fbi --noverbose --nocomments -a -t ${DURATION} -1 ${DEST} >/dev/null 2>>/dev/null
+				else
+					omxplayer -r -o hdmi ${DEST} > dev/null
 				fi
 			else
 				sleep 1		

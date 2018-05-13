@@ -5,9 +5,10 @@ COPY ./app /app
 
 COPY requirements.txt /app
 RUN pip3 install -r /app/requirements.txt
+RUN pip3 install uwsgi
 
 WORKDIR /app
 
 ENV PYTHONPATH=/app
 
-EXPOSE 80
+EXPOSE 8000
