@@ -54,9 +54,10 @@ class UserAdmin(sqla.ModelView):
                     os.makedirs(get_thumbnails_path(model.folder), 0x775)
                     # os.makedirs(get_loops_path(model.folder), 0x775)
                 except:
-                    raise OSError(
-                        'Something went wrong when trying to'
-                        'create account folders!')
+                    pass
+                    # raise OSError(
+                    #    'Something went wrong when trying to'
+                    #    'create account folders!')
 
 
 class LoopModelView(sqla.ModelView):
