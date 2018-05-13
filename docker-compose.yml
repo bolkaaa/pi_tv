@@ -5,8 +5,11 @@ services:
     build: .
     image: pi_tv
     volumes:
-      - ./app:/app
+      - .:/app
+    expose: 
+      - "80"  
     ports:
       - "80:80"
     env_file: .env
-    command: flask run --host=web --port=80
+    restart: always
+    command: uwsgi --http 0.0.0.0:80 --wsgi-file=wsgi.py --callable app --master --processes 2 --max-requests 100 --chdir app  --stats 0.0.0.0:8001
