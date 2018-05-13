@@ -1,7 +1,7 @@
 #! /bin/bash
 setterm -cursor off
 
-MEDIA_FOLDER="<fill>"
+MEDIA_FOLDER="/home/pi/pi_tv/app/static/media"
 PLAYLIST_FILE="${MEDIA_FOLDER}/playlist"
 
 # infinite
@@ -20,7 +20,7 @@ while true; do
 			if [ -e ${DEST} ]; then
 				# lets run fbi if it is an image file...
 				if [ "$TYPE" = "image" ]; then	
-					fbi -d /dev/fb0 -a -t ${DURATION} -1 ${DEST} # >/dev/null 2>>/dev/null
+					fbi -a -t ${DURATION} -1 ${DEST} # >/dev/null 2>>/dev/null
 					# else
 					# vlc --play-and-exit -q $f	
 				fi
