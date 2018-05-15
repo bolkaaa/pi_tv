@@ -40,7 +40,7 @@ then
 else
 	sleep 0	
 fi
-# wait to finish running processes and move on
+# wait the running processes to finish and move on
 while ps ax | grep -v grep | grep -E "omxplayer|fbi" > /dev/null; do
 	sleep 0.1
 done;
