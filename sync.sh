@@ -1,10 +1,9 @@
 #!/bin/bash
 
-HASH_STRING="<fill>"
-
-PI_TV_SERVER="<fill>"
-REMOTE_MEDIA_FOLDER="/home/pi_tv/pi_tv-server/app/static/media/${HASH_STRING}"
+REMOTE_URI=$(cat .uri)
 HOME_FOLDER="/home/pi/pi_tv"
 
-rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" pi_tv@${PI_TV_SERVER}:${REMOTE_MEDIA_FOLDER}/uploads/ ${HOME_FOLDER}/media/
-rsync -avz -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" pi_tv@${PI_TV_SERVER}:${REMOTE_MEDIA_FOLDER}/playlist ${HOME_FOLDER}/playlist
+SSH_ARGS="ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+
+rsync -avz -e "${SSH_ARGS}" ${REMOTE_URI}/uploads/ ${HOME_FOLDER}/media/
+rsync -avz -e "${SSH_ARGS}" ${REMOTE_URI}/playlist ${HOME_FOLDER}/playlist
