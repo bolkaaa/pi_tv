@@ -15,8 +15,9 @@ exit 0
 
 trap cleanup SIGINT SIGTERM
 
-MEDIA_FOLDER="/home/pi/pi_tv/media"
-PLAYLIST_FILE="${MEDIA_FOLDER}/playlist"
+PI_TV_FOLDER="/home/pi/pi_tv"
+MEDIA_FOLDER="${PI_TV_FOLDER}/media"
+PLAYLIST_FILE="${PI_TV_FOLDER}/playlist"
 VIDEO_RECOVER=3
 
 while true; 
@@ -28,7 +29,7 @@ FILENAME=$(echo $LINE | cut -d'@' -f1)
 TYPE=$(echo $LINE | cut -d'@' -f2)
 DURATION=$(echo $LINE | cut -d'@' -f3)
 clear		
-DEST="${MEDIA_FOLDER}/uploads/${FILENAME}"
+DEST="${MEDIA_FOLDER}/${FILENAME}"
 if [[ ( -e ${DEST} ) || ( "$TYPE" = "url" ) ]]; then
 if [ "$TYPE" = "image" ]
 then	
