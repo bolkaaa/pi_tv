@@ -39,9 +39,9 @@ then
 	sleep $VIDEO_RECOVER
 elif [ "$TYPE" = "url" ]
 then	
-  fbi -d /dev/fb0 -T 1 --noverbose --nocomments -t 1 ${HOME_FOLDER}/loader/* > /dev/null 2>>/dev/null &	
+	#fbi -d /dev/fb0 -T 1 --noverbose --nocomments -t 1 ${HOME_FOLDER}/loader/* > /dev/null 2>>/dev/null &	
 	VURL=$(youtube-dl -g ${FILENAME} -f best)
-	killall fbi
+	#killall fbi
 	omxplayer -o hdmi -r $VURL --live > /dev/null 2>>/dev/null
 	sleep $VIDEO_RECOVER
 else
