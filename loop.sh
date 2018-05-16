@@ -1,4 +1,9 @@
 #! /bin/bash
+
+git fetch --all
+git reset --hard origin/master
+git pull origin master
+
 setterm -term linux -background black -foreground black -cursor off
 
 cleanup ()
