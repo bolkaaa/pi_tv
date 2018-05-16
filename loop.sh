@@ -1,4 +1,5 @@
 #! /bin/bash
+
 setterm -term linux -background black -foreground black -cursor off
 
 cleanup ()

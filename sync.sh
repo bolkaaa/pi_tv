@@ -1,4 +1,5 @@
 #!/bin/bash
+
 if [ -e .uri ]; then
   REMOTE_URI=$(cat .uri)
   HOME_FOLDER="/home/pi/pi_tv"
