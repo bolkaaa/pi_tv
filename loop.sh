@@ -4,6 +4,8 @@ git fetch --all
 git reset --hard origin/master
 git pull origin master
 
+exit 0
+
 setterm -term linux -background black -foreground black -cursor off
 
 cleanup ()
