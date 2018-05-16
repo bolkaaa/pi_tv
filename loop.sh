@@ -8,8 +8,10 @@ setterm -term linux -background black -foreground black -cursor off
 
 cleanup ()
 {
-setterm -term linux -background black -foreground white -cursor on	
+killall fbi
+killall omxplayer	
 kill -s SIGTERM $!
+setterm -term linux -background black -foreground white -cursor on	
 exit 0
 }
 
@@ -21,8 +23,7 @@ PLAYLIST_FILE="${PI_TV_FOLDER}/playlist"
 VIDEO_RECOVER=3
 
 while true; 
-do
-sh ./sync.sh	
+do	
 if [ -e ${PLAYLIST_FILE} ]; then
 cat ${PLAYLIST_FILE} | while read LINE
 do {
