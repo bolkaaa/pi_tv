@@ -54,7 +54,8 @@ done;
 else
 sleep 1		
 fi
-} < /dev/null; 
+} < /dev/null;
+wait $! 
 done;
 else 
 sleep 1
