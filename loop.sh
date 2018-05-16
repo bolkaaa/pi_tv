@@ -13,7 +13,8 @@ exit 0
 
 trap cleanup SIGINT SIGTERM
 
-PI_TV_FOLDER="/home/pi/pi_tv"
+HOME_FOLDER="/home/pi"
+PI_TV_FOLDER="${HOME_FOLDER}/pi_tv"
 MEDIA_FOLDER="${PI_TV_FOLDER}/media"
 PLAYLIST_FILE="${PI_TV_FOLDER}/playlist"
 VIDEO_RECOVER=3
@@ -38,7 +39,7 @@ then
 	sleep $VIDEO_RECOVER
 elif [ "$TYPE" = "url" ]
 then	
-  fbi -d /dev/fb0 -T 1 --noverbose --nocomments -a -t 1 ${PI_TV_FOLDER}/loader/* > /dev/null 2>>/dev/null &	
+  fbi -d /dev/fb0 -T 1 --noverbose --nocomments -a -t 1 ${HOME_FOLDER}/loader/* > /dev/null 2>>/dev/null &	
 	VURL=$(youtube-dl -g ${FILENAME} -f best)
 	killall fbi
 	omxplayer -o hdmi -r $VURL --live > /dev/null 2>>/dev/null
