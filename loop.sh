@@ -4,9 +4,9 @@ setterm -term linux -background black -foreground black -cursor off
 
 cleanup ()
 {
+kill -s SIGTERM $!
 killall fbi
 killall omxplayer	
-kill -s SIGTERM $!
 setterm -term linux -background black -foreground white -cursor on	
 exit 0
 }
