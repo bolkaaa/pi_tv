@@ -22,6 +22,7 @@ VIDEO_RECOVER=3
 
 while true; 
 do
+sh ./sync.sh	
 if [ -e ${PLAYLIST_FILE} ]; then
 cat ${PLAYLIST_FILE} | while read LINE
 do {
