@@ -11,7 +11,7 @@ if [ -e .uri ]; then
   rsync --remove-source-files -avz -e "${SSH_ARGS}" ${REMOTE_URI}/tmp/.reboot ${HOME_FOLDER}/.reboot
   if [ -e ${HOME_FOLDER}/.reboot ]; then
   rm ${HOME_FOLDER}/.reboot
-  reboot	
+  sudo reboot	
   fi	
   #	
   rsync -avz -L -e "${SSH_ARGS}" ${REMOTE_URI}/uploads/ ${HOME_FOLDER}/media/
