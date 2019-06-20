@@ -14,7 +14,7 @@ if [ -e .uri ]; then
   sudo reboot
   fi
   #
-  # youtube-dl -U
+  youtube-dl -U
   rsync -avz -L -e "${SSH_ARGS}" ${REMOTE_URI}/uploads/ ${HOME_FOLDER}/media/
   rsync -avz -e "${SSH_ARGS}" --rsync-path="rm -f ${LOG_FILE} && rsync --log-file=${LOG_FILE}" ${REMOTE_URI}/playlist ${HOME_FOLDER}/playlist
 fi
